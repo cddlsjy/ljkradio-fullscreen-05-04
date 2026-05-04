@@ -112,6 +112,13 @@ class MainActivity : AppCompatActivity() {
         statusTextView = findViewById(R.id.status_text_view)
         songTitleTextView = findViewById(R.id.song_title_text_view)
         emptyView = findViewById(R.id.empty_view)
+
+        // 播放控制栏点击事件
+        findViewById<LinearLayout>(R.id.playback_controls)?.setOnClickListener {
+            if (!isFullscreenMode && selectedStation != null) {
+                enterFullscreenMode()
+            }
+        }
     }
 
     /**

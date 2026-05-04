@@ -41,18 +41,21 @@
                 android:visibility="gone"
                 tools:visibility="visible" />
 
-        </FrameLayout>
+         </FrameLayout>
 
-        <!-- 播放控制栏 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorSurface"
-            android:elevation="8dp"
-            android:orientation="horizontal"
-            android:padding="16dp">
+         <!-- 播放控制栏 -->
+         <LinearLayout
+             android:id="@+id/playback_controls"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="@color/colorSurface"
+             android:elevation="8dp"
+             android:orientation="horizontal"
+             android:padding="16dp"
+             android:clickable="true"
+             android:focusable="true">
 
-            <!-- 设置按钮 -->
+             <!-- 设置按钮 -->
             <ImageButton
                 android:id="@+id/settings_button"
                 android:layout_width="48dp"
