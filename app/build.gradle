@@ -40,9 +40,9 @@ android {
 }
 
 dependencies {
-    // IjkPlayer 核心 + armv7a 库 (使用 JitPack 源)
-    implementation 'com.github.longhoangwg:ijkplayer-java:0.8.8'
-    implementation 'com.github.longhoangwg:ijkplayer-armv7a:0.8.8'
+    // IjkPlayer 核心 + armv7a 库
+    implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.8'
 
     // ExoPlayer 核心库 (兼容 SDK 19)
     implementation 'com.google.android.exoplayer:exoplayer-core:2.18.5'
