@@ -150,19 +150,24 @@ class PlayerFullscreenFragment : Fragment() {
             }
             is PlaybackState.Buffering -> {
                 textViewGeneralInfo.text = getString(R.string.buffering)
+                textViewStationName.visibility = View.VISIBLE
                 buttonPlay.setImageResource(R.drawable.ic_pause_circle)
                 isPlaying = true
             }
             is PlaybackState.Playing -> {
-                textViewGeneralInfo.text = state.stationName
                 textViewStationName.visibility = View.VISIBLE
                 textViewStationName.text = state.stationName
                 buttonPlay.setImageResource(R.drawable.ic_pause_circle)
                 textViewNoStation.visibility = View.GONE
                 isPlaying = true
+                if (textViewGeneralInfo.text == getString(R.string.status_stopped) ||
+                    textViewGeneralInfo.text == getString(R.string.buffering)) {
+                    textViewGeneralInfo.text = state.stationName
+                }
             }
             is PlaybackState.Paused -> {
-                textViewGeneralInfo.text = getString(R.string.status_paused)
+                textViewStationName.visibility = View.VISIBLE
+                textViewStationName.text = currentStation?.name ?: ""
                 buttonPlay.setImageResource(R.drawable.ic_play_circle)
                 isPlaying = false
             }
@@ -255,7 +260,24 @@ class PlayerFullscreenFragment : Fragment() {
 
         private fun bindView(view: View, position: Int) {
             if (position == 0) {
-                view.findViewById<ImageView>(R.id.imageViewArt)?.setImageResource(R.drawable.ic_launcher_foreground)
+                val imageView = view.findViewById<ImageView>(R.id.imageViewArt)
+                if (currentStation?.logoUrl?.isNotEmpty() == true) {
+                    try {
+                        android.graphics.BitmapFactory.decodeStream(
+                            android.net.Uri.parse(currentStation?.logoUrl).let { uri ->
+                                context.contentResolver.openInputStream(uri)
+                            }
+                        )?.let { bitmap ->
+                            imageView.setImageBitmap(bitmap)
+                        } ?: run {
+                            imageView.setImageResource(R.drawable.ic_launcher_foreground)
+                        }
+                    } catch (e: Exception) {
+                        imageView.setImageResource(R.drawable.ic_launcher_foreground)
+                    }
+                } else {
+                    imageView.setImageResource(R.drawable.ic_launcher_foreground)
+                }
             } else {
                 view.findViewById<TextView>(R.id.textViewStationDescription)?.text = currentStation?.description
             }

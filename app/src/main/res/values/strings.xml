@@ -59,4 +59,9 @@
     <string name="buffering">缓冲中…</string>
     <string name="unknown_track">未知曲目</string>
     <string name="network_usage">流量: %1$s</string>
+    <string name="import_m3u_title">导入M3U播放列表</string>
+    <string name="import_m3u_success">成功导入 %1$d 个电台</string>
+    <string name="import_m3u_failed">导入失败: %1$s</string>
+    <string name="import_m3u_no_valid">未找到有效的电台信息</string>
+    <string name="import_m3u_select_file">选择M3U文件</string>
 </resources>

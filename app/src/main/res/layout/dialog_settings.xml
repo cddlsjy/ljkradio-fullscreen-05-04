@@ -198,4 +198,22 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="电台管理"
+        android:textSize="16sp"
+        android:textColor="@color/text_primary"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/button_import_m3u"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/import_m3u_select_file"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/colorPrimary" />
+
 </LinearLayout>
